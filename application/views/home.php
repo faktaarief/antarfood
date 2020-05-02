@@ -139,8 +139,8 @@
                 <div class="modal-body">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Lanjut Belanja</button>
+                    <button type="button" class="btn btn-primary">Lanjut Pembayaran</button>
                 </div>
             </div>
         </div>
@@ -155,7 +155,6 @@
     <script>
         $(document).ready(function() {
             let array = [];
-            let array2 = [];
             let z = "cart"
             let isi = JSON.parse(localStorage.getItem('cart'));
 
@@ -199,12 +198,28 @@
 
                 function tampil(result1) {
                     $('.modal-body').append(`
-                    <div class="card mb-3" style="width: 10rem;">
-                        <img src="http://localhost/antarfood-master/assets/img/${result1.image}" class="card-img-top">
-                        <h5 class="card-title"> ${result1.nama}</h5>
-                            <div class="card-body">
-                                <h6 class="card-text">Rp. ${result1.harga}</h6>
+                    <div class="card mb-3" style="">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <img src="http://localhost/antarfood-master/assets/img/${result1.image}" class="img-thumbnail mt-3 ml-3">
                             </div>
+                            <div class="col-md-4">
+                                    <h5 class="card-title"> ${result1.nama}</h5>
+                                        <div class="card-body">
+                                            <h6 class="card-text">Rp. ${result1.harga}</h6>
+                                        </div>
+                            </div>
+                            <div class="col-md-3 mt-3 kuantiti">
+                                <div class="input-group mb-3">
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                        <option selected>Qty</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    </div>
+                            </div>
+                        </div>
                     </div>
                     `)
                 }
