@@ -1,0 +1,23 @@
+/* body */
+body {
+	padding-top: 56px;
+}
+
+.modal-body {
+	overflow: auto;
+}
+
+.card-title {
+	margin-top: 15px;
+	margin-left: 20px;
+}
+.card-text {
+	margin-top: -10px;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+/* .navbar {
+	margin-top: 50px;
+} */
