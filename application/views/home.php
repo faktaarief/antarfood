@@ -92,11 +92,11 @@
                             <div class="card h-100">
                                 <a href="#"><img class="card-img-top" src="<?= base_url('assets/img') . '/' . $produk['image']; ?>" alt=""></a>
                                 <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="#"><?= $produk['nama'] ?></a>
+                                    <h4 class="card-title text-center">
+                                        <?= $produk['nama'] ?>
                                     </h4>
-                                    <h5><?= $produk['harga'] ?></h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                                    <h5 class="ml-2 card-harga">Rp. <?= $produk['harga'] ?>,-</h5>
+                                    <p class="card-text ml-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                                 </div>
                                 <div class="card-footer">
                                     <!-- <small class="text-muted">Masukan Keranjang</small> -->
@@ -136,16 +136,36 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body modal-cart">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Lanjut Belanja</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Lanjut Belanja</button>
                     <button type="button" class="btn btn-primary">Lanjut Pembayaran</button>
                 </div>
             </div>
         </div>
     </div>
-    <div id="tampil"></div>
+
+
+    <!-- Modal Double Item -->
+    <div class="modal fade" id="modalDouble" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pemberitahuan.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Anda Sudah Memasukan Item Ini Di Keranjang...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -153,24 +173,54 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
+        //catatan buat fungsi hapus, subtotal dan total
         $(document).ready(function() {
             let array = [];
             let z = "cart"
-            let isi = JSON.parse(localStorage.getItem('cart'));
+            var isi = JSON.parse(localStorage.getItem('cart'));
+            //load isi cart ketika baru membuka web
+            let quantityCart = JSON.parse(localStorage.getItem('cart'))
+            if (quantityCart) {
+                $('#jumlah-cart').html(quantityCart.length)
+            }
+
+
+            function simpan(array1) {
+                localStorage.setItem(z, JSON.stringify(array1));
+                console.log(JSON.stringify(isi));
+                //thumbnail isi cart
+                let quantityCart = JSON.parse(localStorage.getItem('cart'))
+                if (quantityCart) {
+                    $('#jumlah-cart').html(quantityCart.length)
+                }
+                return isi = JSON.parse(localStorage.getItem('cart'));
+            }
 
             $(".masuk-keranjang").click(function() {
-                // let click = 0;
                 let cart = {};
                 cart.id = $(this).data("id");
                 cart.nama = $(this).data("nama");
                 cart.harga = $(this).data("harga");
                 cart.image = $(this).data("image");
 
+                //cek item dalam keranjang, tidak boleh ada double item
+                if (isi) {
+                    for (var i = 0; i < isi.length; i++) {
+                        if (isi[i].id == cart.id) {
+                            $("#modalDouble").modal({
+                                backdrop: true
+                            });
+                            return false
+                        }
+                    }
+                }
+
                 if (isi) {
                     //cek value local dulu, kalau ada isinya ambil local storage yang ada lalu tambahkan value yang baru
-                    console.log(isi);
                     isi.push(cart);
                     simpan(isi)
+                    console.log(isi);
+
                 } else {
                     array.push(cart);
                     simpan(array);
@@ -179,25 +229,16 @@
                 }
             });
 
-            function simpan(array1) {
-                localStorage.setItem(z, JSON.stringify(array1));
-            }
 
-            let quantityCart = JSON.parse(localStorage.getItem('cart'))
-            if (quantityCart) {
-                $('#jumlah-cart').html(quantityCart.length)
-            }
-
-            let kontenCart = JSON.parse(localStorage.getItem('cart'))
             $('.lihat-cart').click(function() {
-                $('.modal-body').html('')
-                for (var item in kontenCart) {
-                    var result = kontenCart[item]
+                $('.modal-cart').html('')
+                for (var item in isi) {
+                    var result = isi[item]
                     tampil(result)
                 }
 
                 function tampil(result1) {
-                    $('.modal-body').append(`
+                    $('.modal-cart').append(`
                     <div class="card mb-3" style="">
                         <div class="row mb-3">
                             <div class="col-md-4">
@@ -210,14 +251,20 @@
                                         </div>
                             </div>
                             <div class="col-md-3 mt-3 kuantiti">
-                                <div class="input-group mb-3">
-                                    <select class="custom-select" id="inputGroupSelect01">
-                                        <option selected>Qty</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
+                                    <div class="row">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" value="1" aria-label="Username" aria-describedby="basic-addon1" readonly>
                                     </div>
+                                    <div class="row">
+                                            <h6 class="card-text ml-3 mt-1">Sub Total : </h6>
+                                    </div>
+                                    <div class="row">
+                                            <h6 class="card-text ml-3 mt-2">Rp. ${result1.harga}</h6>
+                                    </div>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-danger ml-3 mt-4 modal-hapus">Hapus Item</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
