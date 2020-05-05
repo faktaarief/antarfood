@@ -26,6 +26,15 @@ function deleteMemberData(id) {
 		return item.id != id;
 	});
 	simpan(newData);
+	var isi = JSON.parse(localStorage.getItem(z));
+	$(".modal-cart").html("");
+	for (var item in isi) {
+		var result = isi[item];
+		tampil(result);
+		result.total = isi
+			.map((item) => item.subtotal)
+			.reduce((prev, next) => prev + next);
+	}
 	return isi = JSON.parse(localStorage.getItem(z));
 }
 
