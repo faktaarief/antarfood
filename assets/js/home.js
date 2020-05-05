@@ -1,4 +1,5 @@
 let array = [];
+// let array2 = [{}];
 let z = "cart";
 var isi = JSON.parse(localStorage.getItem(z));
 //load isi cart ketika baru membuka web
@@ -14,12 +15,7 @@ function simpan(array1) {
 	if (quantityCart) {
 		$("#jumlah-cart").html(quantityCart.length);
 	}
-	var isi = JSON.parse(localStorage.getItem(z));
-	$(".modal-cart").html("");
-	for (var item in isi) {
-		var result = isi[item];
-		tampil(result);
-	}
+	return isi = JSON.parse(localStorage.getItem(z));
 }
 
 function deleteMemberData(id) {
@@ -30,7 +26,7 @@ function deleteMemberData(id) {
 		return item.id != id;
 	});
 	simpan(newData);
-	return (isi = JSON.parse(localStorage.getItem(z)));
+	return isi = JSON.parse(localStorage.getItem(z));
 }
 
 $(".masuk-keranjang").click(function () {
