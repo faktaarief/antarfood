@@ -40,7 +40,7 @@
                         </li>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary shopping-cart lihat-cart" data-toggle="modal" data-target="#exampleModal">
-                            Cart <span class="badge badge-pill badge-danger" id="jumlah-cart">0</span>
+                            Keranjang <span class="badge badge-pill badge-danger" id="jumlah-cart">0</span>
                         </button>
                     </ul>
                 </div>
@@ -99,8 +99,17 @@
                                     <p class="card-text ml-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
                                 </div>
                                 <div class="card-footer">
-                                    <!-- <small class="text-muted">Masukan Keranjang</small> -->
-                                    <button type="button" class="masuk-keranjang btn btn-primary btn-sm mr-auto" data-id="<?= $produk['id'] ?>" data-nama="<?= $produk['nama'] ?>" data-harga="<?= $produk['harga'] ?>" data-image="<?= $produk['image'] ?>">Masukan Keranjang</button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <!-- <small class="text-muted">Masukan Keranjang</small> -->
+                                            <button type="button" class="masuk-keranjang btn btn-primary btn-sm" data-id="<?= $produk['id'] ?>" data-nama="<?= $produk['nama'] ?>" data-harga="<?= $produk['harga'] ?>" data-image="<?= $produk['image'] ?>">Masukan Keranjang</button>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <input type="number" min="1" class="form-control kuantiti" value="1" aria-describedby="basic-addon1" id="<?= $produk['id'] ?>">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +129,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+            <p class="m-0 text-center text-white">Copyright &copy; antarFood 2020</p>
         </div>
         <!-- /.container -->
     </footer>
@@ -137,6 +146,11 @@
                     </button>
                 </div>
                 <div class="modal-body modal-cart">
+                </div>
+                <div class="row modal-total">
+                    <div class="col text-center">
+                        <h6></h6>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Lanjut Belanja</button>
@@ -172,116 +186,7 @@
     <script src="https://code.jquery.com/jquery-3.5.0.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script>
-        let array = [];
-        let z = "cart"
-        var isi = JSON.parse(localStorage.getItem('cart'));
-        //load isi cart ketika baru membuka web
-        let quantityCart = JSON.parse(localStorage.getItem('cart'))
-        if (quantityCart) {
-            $('#jumlah-cart').html(quantityCart.length)
-        }
-
-        function simpan(array1) {
-            localStorage.setItem(z, JSON.stringify(array1));
-            //thumbnail isi cart
-            let quantityCart = JSON.parse(localStorage.getItem('cart'))
-            if (quantityCart) {
-                $('#jumlah-cart').html(quantityCart.length)
-            }
-            var isi = JSON.parse(localStorage.getItem('cart'));
-            $('.modal-cart').html('')
-            for (var item in isi) {
-                var result = isi[item]
-                tampil(result)
-            }
-
-        }
-
-        function deleteMemberData(id) {
-            var id = id
-            var storageUsers = JSON.parse(localStorage.getItem("cart"));
-            var newData = [];
-            newData = storageUsers.filter(function(item, index) {
-                return item.id != id;
-            });
-            simpan(newData)
-            return isi = JSON.parse(localStorage.getItem('cart'));
-        }
-
-        $(".masuk-keranjang").click(function() {
-            let cart = {};
-            cart.id = $(this).data("id");
-            cart.nama = $(this).data("nama");
-            cart.harga = $(this).data("harga");
-            cart.image = $(this).data("image");
-            //cek item dalam keranjang, tidak boleh ada double item
-            if (isi) {
-                for (var i = 0; i < isi.length; i++) {
-                    if (isi[i].id == cart.id) {
-                        $("#modalDouble").modal({
-                            backdrop: true
-                        });
-                        return false
-                    }
-                }
-            }
-            if (isi) {
-                //cek value local dulu, kalau ada isinya ambil local storage yang ada lalu tambahkan value yang baru
-                isi.push(cart);
-                simpan(isi)
-            } else {
-                array.push(cart);
-                simpan(array);
-            }
-        });
-
-
-        $('.lihat-cart').click(function() {
-            $('.modal-cart').html('')
-            for (var item in isi) {
-                var result = isi[item]
-                tampil(result)
-            }
-        })
-
-
-
-
-        function tampil(result1) {
-            $('.modal-cart').append(`
-                    <div class="card mb-3" style="">
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <img src="http://localhost/antarfood-master/assets/img/${result1.image}" class="img-thumbnail mt-3 ml-3">
-                            </div>
-                            <div class="col-md-4">
-                                    <h5 class="card-title"> ${result1.nama}</h5>
-                                        <div class="card-body">
-                                            <h6 class="card-text">Rp. ${result1.harga}</h6>
-                                        </div>
-                            </div>
-                            <div class="col-md-3 mt-3 kuantiti">
-                                    <div class="row">
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" value="1" aria-label="Username" aria-describedby="basic-addon1" readonly>
-                                    </div>
-                                    <div class="row">
-                                            <h6 class="card-text ml-3 mt-1">Sub Total : </h6>
-                                    </div>
-                                    <div class="row">
-                                            <h6 class="card-text ml-3 mt-2">Rp. ${result1.harga}</h6>
-                                    </div>
-                                    <div class="row">
-                                        <button type="button" class="btn btn-danger ml-3 mt-4 modal-hapus" onclick="deleteMemberData(${result1.id})">Hapus Item</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    `)
-        }
-    </script>
+    <script src="<?= base_url() ?>assets/js/home.js"></script>
 </body>
 
 </html>
