@@ -173,72 +173,83 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
-        //catatan buat fungsi hapus, subtotal dan total
-        $(document).ready(function() {
-            let array = [];
-            let z = "cart"
-            var isi = JSON.parse(localStorage.getItem('cart'));
-            //load isi cart ketika baru membuka web
+        let array = [];
+        let z = "cart"
+        var isi = JSON.parse(localStorage.getItem('cart'));
+        //load isi cart ketika baru membuka web
+        let quantityCart = JSON.parse(localStorage.getItem('cart'))
+        if (quantityCart) {
+            $('#jumlah-cart').html(quantityCart.length)
+        }
+
+        function simpan(array1) {
+            localStorage.setItem(z, JSON.stringify(array1));
+            //thumbnail isi cart
             let quantityCart = JSON.parse(localStorage.getItem('cart'))
             if (quantityCart) {
                 $('#jumlah-cart').html(quantityCart.length)
             }
-
-
-            function simpan(array1) {
-                localStorage.setItem(z, JSON.stringify(array1));
-                console.log(JSON.stringify(isi));
-                //thumbnail isi cart
-                let quantityCart = JSON.parse(localStorage.getItem('cart'))
-                if (quantityCart) {
-                    $('#jumlah-cart').html(quantityCart.length)
-                }
-                return isi = JSON.parse(localStorage.getItem('cart'));
+            var isi = JSON.parse(localStorage.getItem('cart'));
+            $('.modal-cart').html('')
+            for (var item in isi) {
+                var result = isi[item]
+                tampil(result)
             }
 
-            $(".masuk-keranjang").click(function() {
-                let cart = {};
-                cart.id = $(this).data("id");
-                cart.nama = $(this).data("nama");
-                cart.harga = $(this).data("harga");
-                cart.image = $(this).data("image");
+        }
 
-                //cek item dalam keranjang, tidak boleh ada double item
-                if (isi) {
-                    for (var i = 0; i < isi.length; i++) {
-                        if (isi[i].id == cart.id) {
-                            $("#modalDouble").modal({
-                                backdrop: true
-                            });
-                            return false
-                        }
+        function deleteMemberData(id) {
+            var id = id
+            var storageUsers = JSON.parse(localStorage.getItem("cart"));
+            var newData = [];
+            newData = storageUsers.filter(function(item, index) {
+                return item.id != id;
+            });
+            simpan(newData)
+            return isi = JSON.parse(localStorage.getItem('cart'));
+        }
+
+        $(".masuk-keranjang").click(function() {
+            let cart = {};
+            cart.id = $(this).data("id");
+            cart.nama = $(this).data("nama");
+            cart.harga = $(this).data("harga");
+            cart.image = $(this).data("image");
+            //cek item dalam keranjang, tidak boleh ada double item
+            if (isi) {
+                for (var i = 0; i < isi.length; i++) {
+                    if (isi[i].id == cart.id) {
+                        $("#modalDouble").modal({
+                            backdrop: true
+                        });
+                        return false
                     }
                 }
-
-                if (isi) {
-                    //cek value local dulu, kalau ada isinya ambil local storage yang ada lalu tambahkan value yang baru
-                    isi.push(cart);
-                    simpan(isi)
-                    console.log(isi);
-
-                } else {
-                    array.push(cart);
-                    simpan(array);
-                    console.log(array);
-
-                }
-            });
+            }
+            if (isi) {
+                //cek value local dulu, kalau ada isinya ambil local storage yang ada lalu tambahkan value yang baru
+                isi.push(cart);
+                simpan(isi)
+            } else {
+                array.push(cart);
+                simpan(array);
+            }
+        });
 
 
-            $('.lihat-cart').click(function() {
-                $('.modal-cart').html('')
-                for (var item in isi) {
-                    var result = isi[item]
-                    tampil(result)
-                }
+        $('.lihat-cart').click(function() {
+            $('.modal-cart').html('')
+            for (var item in isi) {
+                var result = isi[item]
+                tampil(result)
+            }
+        })
 
-                function tampil(result1) {
-                    $('.modal-cart').append(`
+
+
+
+        function tampil(result1) {
+            $('.modal-cart').append(`
                     <div class="card mb-3" style="">
                         <div class="row mb-3">
                             <div class="col-md-4">
@@ -262,16 +273,14 @@
                                             <h6 class="card-text ml-3 mt-2">Rp. ${result1.harga}</h6>
                                     </div>
                                     <div class="row">
-                                        <button type="button" class="btn btn-danger ml-3 mt-4 modal-hapus">Hapus Item</button>
+                                        <button type="button" class="btn btn-danger ml-3 mt-4 modal-hapus" onclick="deleteMemberData(${result1.id})">Hapus Item</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     `)
-                }
-            })
-        })
+        }
     </script>
 </body>
 
