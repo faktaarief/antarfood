@@ -40,7 +40,7 @@ class Produk extends CI_Controller
 
             $config['allowed_types'] = 'gif|jpeg|jpg|png';
             $config['max_size'] = '2048';
-            $config['upload_path'] = './assets/img/';
+            $config['upload_path'] = './assets/img/produk';
             $image = $_FILES['image'];
 
             $this->load->library('upload', $config);
@@ -95,7 +95,7 @@ class Produk extends CI_Controller
             if ($image) {
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';
                 $config['max_size'] = '2048';
-                $config['upload_path'] = './assets/img/';
+                $config['upload_path'] = './assets/img/produk';
 
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('image')) {

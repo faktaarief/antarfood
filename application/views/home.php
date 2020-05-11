@@ -9,23 +9,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url();  ?>assets/css/home.css">
-<<<<<<< HEAD
     <!-- Custom CSS -->
     <link href="<?= base_url('assets'); ?>/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?= base_url('assets'); ?>/dist/css/style.min.css" rel="stylesheet">
     <link href="<?= base_url('assets'); ?>/fontawesome/css/font-awesome.min.css" rel="stylesheet">
-=======
->>>>>>> 7202918dbf59ebf10511279830cc74c9db9a5214
 
     <title><?= $title; ?></title>
 </head>
 
 <body>
-<<<<<<< HEAD
 
-=======
->>>>>>> 7202918dbf59ebf10511279830cc74c9db9a5214
     <!-- Navigation -->
     <div class="row">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -59,8 +53,7 @@
             </div>
         </nav>
     </div>
-<<<<<<< HEAD
-    <!-- ============================================================== -->
+    <!--==============================================================-->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
     <!-- <aside class="left-sidebar bg-dark " data-sidebarbg="skin6"> -->
@@ -107,8 +100,7 @@
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
-=======
->>>>>>> 7202918dbf59ebf10511279830cc74c9db9a5214
+
 
     <!-- Page Content -->
     <div class="container">
@@ -118,104 +110,92 @@
 
             <!-- /.col-lg-3 -->
 
-<<<<<<< HEAD
             <div class="col-lg">
 
                 <div id="carouselExampleIndicators" class="carousel slide my-5" data-ride="carousel">
-=======
-            <div class="col-lg-12">
 
-                <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
->>>>>>> 7202918dbf59ebf10511279830cc74c9db9a5214
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
+
+                    <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
+                            </div>
                         </div>
-                        <div class="carousel-item">
-                            <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
-                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
 
-                <div class="row">
-                    <?php foreach ($data as $produk) : ?>
+                    <div class="row">
+                        <?php foreach ($data as $produk) : ?>
 
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card h-100">
-<<<<<<< HEAD
-                                <div class="panel-body" style="padding:4px; text-align:center; overflow:hidden; ">
-                                    <a href="#"><img style="height: 300px; width: 300px; padding: 2px;" src="<?= base_url('assets/img') . '/' . $produk['image']; ?>" alt=""></a>
-                                </div>
-=======
-                                <a href="#"><img class="card-img-top" src="<?= base_url('assets/img') . '/' . $produk['image']; ?>" alt=""></a>
->>>>>>> 7202918dbf59ebf10511279830cc74c9db9a5214
-                                <div class="card-body">
-                                    <h4 class="card-title text-center">
-                                        <?= $produk['nama'] ?>
-                                    </h4>
-<<<<<<< HEAD
-                                    <h5 class="ml-2 card-harga">Rp. <?= number_format($produk['harga'], 0, ',', ','); ?>,-</h5>
-                                    <br>
-                                    <p class="card-text ml-2"><?= $produk['deskripsi']; ?></p>
-=======
-                                    <h5 class="ml-2 card-harga">Rp. <?= $produk['harga'] ?>,-</h5>
-                                    <p class="card-text ml-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
->>>>>>> 7202918dbf59ebf10511279830cc74c9db9a5214
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col">
-                                            <!-- <small class="text-muted">Masukan Keranjang</small> -->
-                                            <button type="button" class="masuk-keranjang btn btn-primary btn-sm" data-id="<?= $produk['id'] ?>" data-nama="<?= $produk['nama'] ?>" data-harga="<?= $produk['harga'] ?>" data-image="<?= $produk['image'] ?>">Masukan Keranjang</button>
-                                        </div>
-                                        <div class="col">
-                                            <div class="input-group">
-                                                <input type="number" min="1" class="form-control kuantiti" value="1" aria-describedby="basic-addon1" id="<?= $produk['id'] ?>">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="panel-body" style="padding:4px; text-align:center; overflow:hidden; ">
+                                        <a href="#"><img style="height: 300px; width: 300px; padding: 2px;" src="<?= base_url('assets/img/produk') . '/' . $produk['image']; ?>" alt=""></a>
+                                    </div>
+
+
+                                    <div class="card-body">
+                                        <h4 class="card-title text-center">
+                                            <?= $produk['nama'] ?>
+                                        </h4>
+                                        <h5 class="ml-2 card-harga">Rp. <?= number_format($produk['harga'], 0, ',', ','); ?>,-</h5>
+                                        <br>
+                                        <p class="card-text ml-2"><?= $produk['deskripsi']; ?></p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col">
+                                                <!-- <small class="text-muted">Masukan Keranjang</small> -->
+                                                <button type="button" class="masuk-keranjang btn btn-primary btn-sm" data-id="<?= $produk['id'] ?>" data-nama="<?= $produk['nama'] ?>" data-harga="<?= $produk['harga'] ?>" data-image="<?= $produk['image'] ?>">Masukan Keranjang</button>
+                                            </div>
+                                            <div class="col">
+                                                <div class="input-group">
+                                                    <input type="number" min="1" class="form-control kuantiti" value="1" aria-describedby="basic-addon1" id="<?= $produk['id'] ?>">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
+                    <!-- /.row -->
+
                 </div>
-                <!-- /.row -->
+                <!-- /.col-lg-9 -->
 
             </div>
-            <!-- /.col-lg-9 -->
+            <!-- /.row -->
 
         </div>
-        <!-- /.row -->
-
     </div>
     <!-- /.container -->
 
     <!-- Footer -->
-<<<<<<< HEAD
     <footer class="py-3 bg-dark">
-=======
-    <footer class="py-5 bg-dark">
->>>>>>> 7202918dbf59ebf10511279830cc74c9db9a5214
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; antarFood 2020</p>
-        </div>
-        <!-- /.container -->
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; antarFood 2020</p>
+            </div>
+            <!-- /.container -->
     </footer>
 
 

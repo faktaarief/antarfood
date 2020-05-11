@@ -59,10 +59,13 @@ class Admin extends CI_Controller
                 if (!$this->upload->do_upload('image')) {
                     echo $this->upload->display_errors();
                 } else {
+                    $old_image = $data['user']['image'];
+                    if ($old_image != 'default.jpg') {
+                        unlink(FCPATH . 'assets/img/profile' . $old_image);
+                    }
                     $image = $this->upload->data('file_name');
                     $this->db->set('image', $image);
                 }
-
                 $this->db->set('name', $name);
                 $this->db->where('email', $email);
                 $this->db->update('user');
