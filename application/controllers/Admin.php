@@ -23,7 +23,6 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'My Profile';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('templates/sidebar', $data);
@@ -64,14 +63,17 @@ class Admin extends CI_Controller
                         unlink(FCPATH . 'assets/img/profile' . $old_image);
                     }
                     $image = $this->upload->data('file_name');
-                    $this->db->set('image', $image);
                 }
+            } else {
+                $image = $this->input->post('gambarlama');
+            }
+            
+                $this->db->set('image', $image);
                 $this->db->set('name', $name);
                 $this->db->where('email', $email);
                 $this->db->update('user');
                 $this->session->set_flashdata('pesan', '<di v class="alert alert-success" role="alert">Profil telah diubah!</di>');
                 redirect('admin/profil');
-            }
         }
     }
 }

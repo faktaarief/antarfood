@@ -35,6 +35,7 @@ function deleteMemberData(id) {
 			.map((item) => item.subtotal)
 			.reduce((prev, next) => prev + next);
 	}
+	totalCart(isi)
 	return isi = JSON.parse(localStorage.getItem(z));
 }
 
@@ -79,19 +80,26 @@ $(".lihat-cart").click(function () {
 	for (var item in isi) {
 		var result = isi[item];
 		tampil(result);
-		result.total = isi
+	}
+	totalCart(isi)
+});
+
+function totalCart(variabel) {
+	for (var item in variabel) {
+		var result = variabel[item];
+		result.total = variabel
 			.map((item) => item.subtotal)
 			.reduce((prev, next) => prev + next);
 	}
 	$(".text-center h6").html(`Total Belanja Anda Adalah : Rp. ${result.total}`);
-});
+}
 
 function tampil(result1) {
 	$(".modal-cart").append(`
             <div class="card mb-2" style="">
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <img src="http://localhost/antarfood-master/assets/img/${result1.image}" class="img-thumbnail mt-3 ml-3">
+                        <img src="http://localhost/antarfood-master/assets/img/produk/${result1.image}" class="img-thumbnail mt-3 ml-3">
                     </div>
                     <div class="col-md-4">
                             <h5 class="card-title"> ${result1.nama}</h5>

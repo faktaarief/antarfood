@@ -23,7 +23,7 @@
                         </div>
                     <?php endif; ?>
 
-                    <?= form_open_multipart(); ?>
+                    <?= form_open_multipart('produk/editproduk'); ?>
                     <div class="modal-body">
                         <div class="form-group row">
                             <label for="nama" class="col-sm-2 col-form-label">Nama Produk</label>
@@ -44,8 +44,9 @@
                         </div>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="image" name="image" value="<?= $produk['image']; ?>">
-                            <label class="custom-file-label" for="image">Choose file</label>
+                            <label class="custom-file-label" for="image"><?= $produk['image']; ?></label>
                         </div>
+                        <input type="hidden" name=gambarlama value="<?= $produk['image']; ?>">
                     </div>
                     <div class="modal-footer">
                         <a href="<?= base_url('produk'); ?>" class="btn btn-danger"> Cancel</a>

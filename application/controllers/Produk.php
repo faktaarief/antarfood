@@ -73,11 +73,11 @@ class Produk extends CI_Controller
         </div>');
         redirect('produk');
     }
-    public function editproduk($id)
+    public function editproduk()
     {
         $data['title'] = 'Ubah Produk';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['produk'] = $this->db->get_where('tb_produk', ['id' => $id])->row_array();
+        $data['produk'] = $this->db->get_where('tb_produk', ['id' => $this->uri->segment(3)])->row_array();
 
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('harga', 'Harga', 'required');
@@ -100,9 +100,14 @@ class Produk extends CI_Controller
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('image')) {
                     echo $this->upload->display_errors();
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Detail Produk telah diubah!</div>');
+                    redirect('produk');
                 } else {
                     $image = $this->upload->data('file_name');
                 }
+            } else {
+                $image = $this->input->post('gambarlama');
+            }
                 $data = [
                     'nama' => $this->input->post('nama'),
                     'harga' => $this->input->post('harga'),
@@ -114,7 +119,6 @@ class Produk extends CI_Controller
                 $this->db->update('tb_produk', $data);
                 $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Detail Produk telah diubah!</div>');
                 redirect('produk');
-            }
         }
     }
     public function detailproduk($id)

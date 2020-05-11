@@ -16,11 +16,11 @@
     <!-- ============================================================== -->
     <header class="topbar" data-navbarbg="skin5">
         <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-            <div class="navbar-header" data-logobg="skin5">
+            <div class="navbar-header ml-auto" data-logobg="skin5">
                 <!-- ============================================================== -->
                 <!-- Logo -->
                 <!-- ============================================================== -->
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="<?= base_url() ?>">
                     <!-- Logo icon -->
                     <b class="logo-icon">
                         <h3>Antar Food</h3>

@@ -74,10 +74,11 @@
                                         <div class="col-md-12">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="image" name="image" value="<?= $user['image']; ?>">
-                                                <label class="custom-file-label" for="image">Choose file</label>
+                                                <label class="custom-file-label" for="image"><?= $user['image']; ?></label>
                                             </div>
                                         </div>
                                     </div>
+                                    <input type="hidden" name=gambarlama value="<?= $user['image']; ?>">
 
                                     <div class="form-group">
                                         <div class="col-sm-12">
