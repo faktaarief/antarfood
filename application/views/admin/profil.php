@@ -33,8 +33,10 @@
                                 <div class="card-body">
                                     <?= $this->session->flashdata('pesan'); ?>
                                     <div class="m-t-30"> <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="rounded-circle" width="150" />
-                                        <h4 class="card-title m-t-10"><?= $user['name']; ?></h4>
+                                        <br>
+                                        <br>
                                         <h6 class="card-subtitle">Administrator</h6>
+                                        <h4 class="card-title m-t-10"><?= $user['name']; ?></h4>
                                         <small class="text-muted">Email address </small>
                                         <h6><?= $user['email']; ?></h6>
                                     </div>
