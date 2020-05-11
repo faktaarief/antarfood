@@ -58,7 +58,11 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
+<<<<<<< HEAD
 $autoload['libraries'] = array('cart', 'database', 'form_validation');
+=======
+$autoload['libraries'] = array('cart', 'database');
+>>>>>>> 7202918dbf59ebf10511279830cc74c9db9a5214
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +93,11 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
+<<<<<<< HEAD
 $autoload['helper'] = array('url', 'antarfood');
+=======
+$autoload['helper'] = array('url');
+>>>>>>> 7202918dbf59ebf10511279830cc74c9db9a5214
 
 /*
 | -------------------------------------------------------------------
