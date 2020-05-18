@@ -4,7 +4,7 @@
     let myOrder = [];
 
     function init() {
-        if(getCart == null) {
+        if(!!getCart == null) {
             console.log('Keranjang kosong');
         } else {
 
@@ -21,11 +21,13 @@
                     let valHarga = listItem.harga;
                     let valQty = listItem.quantity;
                     let valSubTotal = listItem.subtotal;
-                    let valJoin = `${valNama} (${valQty} x ${convertToRupiah(valHarga)}) = ${valSubTotal}`;
+                    let valJoin = `${valNama} (${valQty} x ${convertToRupiah(valHarga)}) = ${convertToRupiah(valSubTotal)} ${hr}`;
                     myOrder.push(valJoin);
                 });
         
-                let valTotalHarga = $('.total-harga').html();
+                let getTotallHarga = $('.total-harga').html();
+                let valTotalHarga = `Total : ${convertToRupiah(getTotallHarga)}`; 
+
                 myOrder.push(valTotalHarga);
 
                 let valJoinAll = myOrder.join('');
