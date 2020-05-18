@@ -214,11 +214,12 @@
                 <div class="row modal-total">
                     <div class="col text-center">
                         <h6></h6>
+                        <p class="total-harga d-none"></p>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Lanjut Belanja</button>
-                    <button type="button" class="btn btn-primary">Lanjut Pembayaran</button>
+                    <button type="button" class="btn btn-primary checkout">Lanjut Pembayaran</button>
                 </div>
             </div>
         </div>
@@ -247,10 +248,11 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.0.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="<?= base_url() ?>assets/js/home.js"></script>
+    <script src="<?= base_url() ?>assets/js/checkout.js"></script>
 </body>
 
 </html>

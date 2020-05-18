@@ -1,0 +1,48 @@
+Looking for git in: git
+Using git 2.17.1 from git
+> git rev-parse --show-toplevel
+> git rev-parse --git-dir
+Open repository: /var/www/html/antarfood
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+fatal: no upstream configured for branch 'master'
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git check-ignore -v -z --stdin
+> git show :application/config/database.php
+> git ls-files --stage -- /var/www/html/antarfood/application/config/database.php
+> git cat-file -s b38b9a76156793809db9e133b42c6037a05b4f54
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+fatal: no upstream configured for branch 'master'
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse master
+> git rev-parse --symbolic-full-name master@{u}
+fatal: no upstream configured for branch 'master'
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git config --get commit.template
+> git show :application/config/autoload.php
+> git ls-files --stage -- /var/www/html/antarfood/application/config/autoload.php
+> git cat-file -s 47d5cdbfbb041714c5257520b7d42f1e839f73a4
+> git show :application/config/config.php
+> git ls-files --stage -- /var/www/html/antarfood/application/config/config.php
+> git cat-file -s 3ef7d3dfce2a759a9557f10adde7d8dab3397599
+> git show :application/config/database.php
+> git ls-files --stage -- /var/www/html/antarfood/application/config/database.php
+> git cat-file -s b38b9a76156793809db9e133b42c6037a05b4f54
+> git show :application/config/autoload.php
+> git ls-files --stage -- /var/www/html/antarfood/application/config/autoload.php
+> git cat-file -s 47d5cdbfbb041714c5257520b7d42f1e839f73a4

@@ -10,6 +10,8 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <title><?= $title; ?></title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets'); ?>/libs/bootstrap/dist/js/bootstrap.min.css">
     <!-- Custom CSS -->
     <link href="<?= base_url('assets'); ?>/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->

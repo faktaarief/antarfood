@@ -35,7 +35,7 @@ function deleteMemberData(id) {
 			.map((item) => item.subtotal)
 			.reduce((prev, next) => prev + next);
 	}
-	totalCart(isi)
+	totalCart(isi);
 	return isi = JSON.parse(localStorage.getItem(z));
 }
 
@@ -92,7 +92,10 @@ function totalCart(variabel) {
 			.reduce((prev, next) => prev + next);
 	}
 	$(".text-center h6").html(`Total Belanja Anda Adalah : Rp. ${result.total}`);
+	$('.total-harga').html(result.total);
 }
+
+totalCart();
 
 function tampil(result1) {
 	$(".modal-cart").append(`
