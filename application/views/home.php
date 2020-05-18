@@ -209,9 +209,30 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body modal-cart">
+                <div class="modal-body">
+                    <!-- form user -->
+                    <div class="col-lg-12">
+                        <form action="">
+                            <div class="form-group mt-2 mb-2">
+                                <label for="nama">Nama</label>
+                                <input type="text" class="form-control" id="nama">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="notelp">No Telp</label>
+                                <input type="number" class="form-control" id="notelp">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="alamat">Alamat</label>
+                                <textarea class="form-control" id="alamat" rows="3"></textarea>
+                            </div>
+                        </form>
+                        <div class="modal-cart">
+                        
+                        </div>
+                    </div>
+                    <!-- endform -->
                 </div>
-                <div class="row modal-total">
+                <div class="row modal-total mt-4">
                     <div class="col text-center">
                         <h6></h6>
                         <p class="total-harga d-none"></p>

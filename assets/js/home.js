@@ -95,8 +95,6 @@ function totalCart(variabel) {
 	$('.total-harga').html(result.total);
 }
 
-totalCart();
-
 function tampil(result1) {
 	$(".modal-cart").append(`
             <div class="card mb-2" style="">

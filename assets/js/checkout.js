@@ -1,41 +1,63 @@
 (function checkout() {
 
-    const getCart = JSON.parse(localStorage.getItem('cart'));
+    let getCart;
     let myOrder = [];
 
     function init() {
+        getCart = JSON.parse(localStorage.getItem('cart'));
+        
         if(!!getCart == null) {
             console.log('Keranjang kosong');
         } else {
 
             $('.checkout').click(function () {
-                let nomorWa = 6281282835477;
-                let hr = `%0A----------------%0A`;
-                let br = '%0A%0A';
 
-                let templateOpeningChat = `Halo, berikut list orderan saya ${br} Order Item(s) ${hr}`;
-                myOrder.push(templateOpeningChat);
+                const nama = $('#nama').val();
+                const nomor = $('#notelp').val();
+                const alamat = $('#alamat').val();
 
-                getCart.forEach(listItem => {
-                    let valNama = listItem.nama;
-                    let valHarga = listItem.harga;
-                    let valQty = listItem.quantity;
-                    let valSubTotal = listItem.subtotal;
-                    let valJoin = `${valNama} (${valQty} x ${convertToRupiah(valHarga)}) = ${convertToRupiah(valSubTotal)} ${hr}`;
-                    myOrder.push(valJoin);
-                });
-        
-                let getTotallHarga = $('.total-harga').html();
-                let valTotalHarga = `Total : ${convertToRupiah(getTotallHarga)}`; 
+                if (nama == '') {
+                    alert('Mohon Nama Diisi');
+                } else if (nomor == '') {
+                    alert('Mohon Nomor Telp Diisi');
+                } else if (alamat == '') {
+                    alert('Mohon Alamat Diisi');
+                } else {                    
+                    let nomorWa = 6281282835477;
+                    let hr = `%0A----------------%0A`;
+                    let single = `%0A`;
+                    let br = '%0A%0A';
 
-                myOrder.push(valTotalHarga);
+                    let templateOpeningChat = `Halo, berikut list orderan saya ${br} Order Item(s) ${hr}`;
+                    myOrder.push(templateOpeningChat);
 
-                let valJoinAll = myOrder.join('');
-                let sendToWa = `https://wa.me/${nomorWa}?text=${valJoinAll}`;
+                    getCart = JSON.parse(localStorage.getItem('cart'));
 
-                window.location = sendToWa;
+                    getCart.forEach(listItem => {
+                        let valNama = listItem.nama;
+                        let valHarga = listItem.harga;
+                        let valQty = listItem.quantity;
+                        let valSubTotal = listItem.subtotal;
+                        let valJoin = `${valNama} (${valQty} x ${convertToRupiah(valHarga)}) = ${convertToRupiah(valSubTotal)} ${hr}`;
+                        myOrder.push(valJoin);
+                    });
+            
+                    let getTotallHarga = $('.total-harga').html();
+                    let valTotalHarga = `Total : ${convertToRupiah(getTotallHarga)}`; 
 
-                localStorage.clear();
+                    myOrder.push(valTotalHarga);
+
+                    let dataPemesan = `Data Pemesan ${hr} Nama : ${nama}%0ANomor Telp : ${nomor}%0AAlamat : ${alamat}`;
+
+                    myOrder.push(dataPemesan);
+
+                    let valJoinAll = myOrder.join('');
+                    let sendToWa = `https://wa.me/${nomorWa}?text=${valJoinAll}`;
+
+                    window.location = sendToWa;
+
+                    localStorage.clear();
+                }
             });
         }
     }
