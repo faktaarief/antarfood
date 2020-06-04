@@ -100,7 +100,7 @@ class Produk extends CI_Controller
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('image')) {
                     echo $this->upload->display_errors();
-                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Detail Produk telah diubah!</div>');
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Detail Produk GAGAL diubah!</div>');
                     redirect('produk');
                 } else {
                     $image = $this->upload->data('file_name');

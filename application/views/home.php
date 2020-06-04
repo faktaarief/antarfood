@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
-
+<!-- color
+#E36E00 -->
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#E36E00">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -14,93 +16,44 @@
     <!-- Custom CSS -->
     <link href="<?= base_url('assets'); ?>/dist/css/style.min.css" rel="stylesheet">
     <link href="<?= base_url('assets'); ?>/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.0/dist/sweetalert2.min.css">
 
     <title><?= $title; ?></title>
 </head>
 
-<body>
+<body style="max-width: 1020px; background-image: url('https://telegra.ph/file/ff540bb9329b3150deb29.png'); background-color: #F5F5F5; background-size: 214px 214px; background-attachment: fixed;" class="mx-auto shadow bg-white rounded">
 
+<div class="bg-white">
     <!-- Navigation -->
     <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow mb-5 bg-white rounded mx-auto" style="max-width: 1020px; border-bottom: 5px solid #E36E00; !important">
             <div class="container">
-                <a class="navbar-brand" href="#"><?= $web ?></a>
+                <a class="navbar-brand" href="#">
+                    <img src="<?= base_url('assets/img/produk/logo.png'); ?>" alt="logo" width="50px">
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home
-                                <span class="sr-only">(current)</span>
-                            </a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tentang</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="#menu">Menu</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                        <li class="nav-item mr-3">
+                            <a class="nav-link" href="#contact">Kontak</a>
                         </li>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary shopping-cart lihat-cart" data-toggle="modal" data-target="#exampleModal">
-                            Keranjang <span class="badge badge-pill badge-danger" id="jumlah-cart">0</span>
-                        </button>
+                        <a class="shopping-cart lihat-cart button-keranjang mx-auto mt-2" data-toggle="modal" data-target="#exampleModal" disabled>
+                            <i class="fas fa-shopping-cart fa-lg" style="color: #E36E00;"></i>&nbsp;<span class="badge badge-pill badge-danger qty-keranjang font-bold" id="jumlah-cart">0</span>
+                        </a>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
-    <!--==============================================================-->
-    <!-- Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
-    <!-- <aside class="left-sidebar bg-dark " data-sidebarbg="skin6"> -->
-    <!-- Sidebar scroll-->
-    <!-- <div class="scroll-sidebar "> -->
-    <!-- Sidebar navigation-->
-    <!-- <nav class="sidebar-nav" style="position: fixed;">
-                <ul id="sidebarnav"> -->
-    <!-- User Profile-->
-    <!-- <li> -->
-    <!-- User Profile-->
-
-    <!-- <div class="user-profile d-flex no-block dropdown m-t-20">
-                            <a class="navbar-brand" href="index.html"> -->
-    <!-- Logo icon -->
-    <!-- <div class="navbar-header" data-logobg="skin5"></div>
-                                <b class="logo-icon">
-                                    <h3>Antar Food</h3>
-                                </b>
-                            </a>
-                        </div> -->
-
-    <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                            <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-                        </div> -->
-
-
-    <!-- End User Profile-->
-    <!-- </li> -->
-    <!-- <li class="p-15 m-t-10"><a href="javascript:void(0)" class="btn btn-block create-btn text-white no-block d-flex align-items-center"><i class="fa fa-plus-square"></i> <span class="hide-menu m-l-5">Create New</span> </a></li> -->
-    <!-- User Profile-->
-    <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url('admin'); ?>" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="" aria-expanded="false"><i class="mdi mdi-account-network"></i><span class="hide-menu">Profile</span></a></li>
-                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?= base_url('produk'); ?>" aria-expanded="false"><i class="mdi mdi-border-all"></i><span class="hide-menu">Produk</span></a></li>
-                </ul>
-
-            </nav> -->
-    <!-- End Sidebar navigation -->
-    <!-- </div> -->
-    <!-- End Sidebar scroll-->
-    <!-- </aside> -->
-    <!-- ============================================================== -->
-    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-
 
     <!-- Page Content -->
     <div class="container">
@@ -121,15 +74,15 @@
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         </ol>
-                        <div class="carousel-inner" role="listbox">
+                        <div class="carousel-inner" style="border-radius: 12px;" role="listbox">
                             <div class="carousel-item active">
-                                <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
+                                <img class="d-block img-fluid" src="<?= base_url('assets/img/produk/carousel-1.jpg'); ?>" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
+                                <img class="d-block img-fluid" src="<?= base_url('assets/img/produk/carousel-2.jpg'); ?>" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
+                                <img class="d-block img-fluid" src="<?= base_url('assets/img/produk/carousel-3.jpg'); ?>" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -142,13 +95,13 @@
                         </a>
                     </div>
 
-                    <div class="row">
+                    <div class="row" id="menu">
                         <?php foreach ($data as $produk) : ?>
 
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <div class="card h-100">
                                     <div class="panel-body" style="padding:4px; text-align:center; overflow:hidden; ">
-                                        <a href="#"><img style="height: 300px; width: 300px; padding: 2px;" src="<?= base_url('assets/img/produk') . '/' . $produk['image']; ?>" alt=""></a>
+                                        <a href="#"><img style="height: 300px; width: 300px; padding: 2px; border-radius: 12px;" src="<?= base_url('assets/img/produk') . '/' . $produk['image']; ?>" alt=""></a>
                                     </div>
 
 
@@ -156,20 +109,22 @@
                                         <h4 class="card-title text-center">
                                             <?= $produk['nama'] ?>
                                         </h4>
-                                        <h5 class="ml-2 card-harga">Rp. <?= number_format($produk['harga'], 0, ',', ','); ?>,-</h5>
+                                        <h5 class="ml-2 card-harga">Rp <?= number_format($produk['harga'], 0, '.', '.'); ?></h5>
                                         <br>
                                         <p class="card-text ml-2"><?= $produk['deskripsi']; ?></p>
                                     </div>
                                     <div class="card-footer">
                                         <div class="row">
                                             <div class="col">
-                                                <!-- <small class="text-muted">Masukan Keranjang</small> -->
-                                                <button type="button" class="masuk-keranjang btn btn-primary btn-sm" data-id="<?= $produk['id'] ?>" data-nama="<?= $produk['nama'] ?>" data-harga="<?= $produk['harga'] ?>" data-image="<?= $produk['image'] ?>">Masukan Keranjang</button>
+                                                <div class="input-group">
+                                                    <a class="minus"><i class="far fa-minus-square fa-lg" style="font-size: 30px; margin:6px 6px 0 0; color: #F1BC32;"></i></a>
+                                                    <input type="number" min="1" class="form-control kuantiti" value="1" aria-describedby="basic-addon1" id="<?= $produk['id'] ?>">
+                                                    <a class="plus"><i class="far fa-plus-square fa-lg" style="font-size: 30px; margin:6px 0 0 6px; color: #F1BC32;"></i></a>
+                                                </div>
                                             </div>
                                             <div class="col">
-                                                <div class="input-group">
-                                                    <input type="number" min="1" class="form-control kuantiti" value="1" aria-describedby="basic-addon1" id="<?= $produk['id'] ?>">
-                                                </div>
+                                                <!-- <small class="text-muted">Masukan Keranjang</small> -->
+                                                <button type="button" class="masuk-keranjang btn btn-sm p-2" data-id="<?= $produk['id'] ?>" data-nama="<?= $produk['nama'] ?>" data-harga="<?= $produk['harga'] ?>" data-image="<?= $produk['image'] ?>" style="border: 1px solid #E36E00; color: #E36E00; border-radius: 8px;">Masukan Keranjang</button>
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +133,7 @@
                         <?php endforeach; ?>
                     </div>
                     <!-- /.row -->
-
+                    <?php echo $pagination; ?>
                 </div>
                 <!-- /.col-lg-9 -->
 
@@ -190,10 +145,18 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-3 bg-dark">
-        <div class="container">
-            <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; antarFood 2020</p>
+    <footer class="py-3" style="background-color: #E36E00;">
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="row row-bawah">
+                        <img src="<?= base_url('assets/img/produk/logo-white.png'); ?>" alt="logo" width="120px">
+                        <span class="d-inline teks-bawah">
+                            <i class="far fa-building fa-lg"></i> &nbsp; Office Jalan Raya Bogor - Jakarta KM 46 <br>
+                            <i id="contact" class="far fa-envelope fa-lg mt-4"></i> &nbsp; marketing@antarfood.com <br>
+                            <i class="fas fa-phone-square-alt fa-lg mt-4"></i> &nbsp; 0812 - 8283 - 5477
+                        </span>
+                </div>
+                <p class="m-0 mt-3 text-center text-white">&copy; AntarFood 2020 [dibuat] dengan ❤</p>
             </div>
             <!-- /.container -->
     </footer>
@@ -209,9 +172,30 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body modal-cart">
+                <div class="modal-body">
+                    <!-- form user -->
+                    <div class="col-lg-12">
+                        <form action="">
+                            <div class="form-group mt-2 mb-2">
+                                <label for="nama">Nama</label>
+                                <input type="text" class="form-control" id="nama">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="notelp">No Telp</label>
+                                <input type="number" class="form-control" id="notelp">
+                            </div>
+                            <div class="form-group mt-2 mb-2">
+                                <label for="alamat">Alamat</label>
+                                <textarea class="form-control" id="alamat" rows="3"></textarea>
+                            </div>
+                        </form>
+                        <div class="modal-cart">
+                        
+                        </div>
+                    </div>
+                    <!-- endform -->
                 </div>
-                <div class="row modal-total">
+                <div class="row modal-total mt-4">
                     <div class="col text-center">
                         <h6></h6>
                         <p class="total-harga d-none"></p>
@@ -245,6 +229,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -253,6 +238,44 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="<?= base_url() ?>assets/js/home.js"></script>
     <script src="<?= base_url() ?>assets/js/checkout.js"></script>
+    <script src="https://kit.fontawesome.com/a906198944.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.0/dist/sweetalert2.min.js"></script>
+    <script>
+        let cek = $('.qty-keranjang').html();
+        if(cek <= 0)
+            $('.qty-keranjang').addClass('d-none');
+        else {
+            $('.qty-keranjang').removeClass('d-none');
+            $('.button-keranjang').removeAttr('disabled');
+        }
+
+        $('.plus').each(function() {
+            $(this).on('click', plus);
+        });
+
+        $('.minus').each(function() {
+            $(this).on('click', minus);
+        });
+
+        function plus(event) {
+            let getVal = event.currentTarget.previousElementSibling;
+            let incVal = parseInt(getVal.value) + parseInt(1);
+            getVal.value = parseInt(incVal);
+        }
+
+        function minus(event) {
+            let getVal = event.currentTarget.nextElementSibling;
+
+            if(getVal.value <= 1) {
+                getVal.value = parseInt(1);
+            } else {
+                let incVal = parseInt(getVal.value) - parseInt(1);
+                getVal.value = parseInt(incVal);
+            }
+
+            
+        }
+    </script>
 </body>
 
 </html>
