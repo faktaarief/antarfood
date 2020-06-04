@@ -40,6 +40,8 @@ function deleteMemberData(id) {
 }
 
 $(".masuk-keranjang").click(function () {
+	$('.button-keranjang').removeAttr('disabled');
+	$('.qty-keranjang').removeClass('d-none');
 	let cart = {};
 	cart.id = $(this).data("id");
 	cart.nama = $(this).data("nama");
@@ -69,9 +71,21 @@ $(".masuk-keranjang").click(function () {
 		//cek value local dulu, kalau ada isinya ambil local storage yang ada lalu tambahkan value yang baru
 		isi.push(cart);
 		simpan(isi);
+		$('.button-keranjang').shake();
+		Swal.fire(
+			'Berhasil!',
+			'Item dimasukkan keranjang!',
+			'success'
+		  )
 	} else {
 		array.push(cart);
 		simpan(array);
+		$('.button-keranjang').shake();
+		Swal.fire(
+			'Berhasil!',
+			'Item dimasukkan keranjang!',
+			'success'
+		  )
 	}
 });
 
@@ -91,8 +105,21 @@ function totalCart(variabel) {
 			.map((item) => item.subtotal)
 			.reduce((prev, next) => prev + next);
 	}
-	$(".text-center h6").html(`Total Belanja Anda Adalah : Rp. ${result.total}`);
-	$('.total-harga').html(result.total);
+	if(isi.length <= 0){
+		$(".text-center h6").html(`Total Belanja Anda Adalah : Rp 0`);
+		location.reload();
+	} else {
+		$(".text-center h6").html(`Total Belanja Anda Adalah : ${convertToRupiah(result.total)}`);
+		$('.total-harga').html(result.total);
+	}
+}
+
+function convertToRupiah(angka) {
+	var rupiah = '';
+	var angkarev = angka.toString().split('').reverse().join('');
+	for (var i = 0; i < angkarev.length; i++)
+		if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
+	return 'Rp ' + rupiah.split('', rupiah.length - 1).reverse().join('');
 }
 
 function tampil(result1) {
@@ -105,7 +132,7 @@ function tampil(result1) {
                     <div class="col-md-4">
                             <h5 class="card-title"> ${result1.nama}</h5>
                                 <div class="card-body">
-                                    <h6 class="card-text">Rp. ${result1.harga}</h6>
+                                    <h6 class="card-text">${convertToRupiah(result1.harga)}</h6>
                                 </div>
                     </div>
                     <div class="col-md-3 mt-3 kuantiti">
@@ -117,7 +144,7 @@ function tampil(result1) {
                                     <h6 class="card-text ml-3 mt-1">Sub Total : </h6>
                             </div>
                             <div class="row">
-                                    <h6 class="card-text ml-3 mt-2">Rp. ${result1.subtotal}</h6>
+                                    <h6 class="card-text ml-3 mt-2">${convertToRupiah(result1.subtotal)}</h6>
                             </div>
                             <div class="row">
                                 <button type="button" class="btn btn-danger ml-3 mt-4 modal-hapus" onclick="deleteMemberData(${result1.id})">Hapus Item</button>
@@ -128,3 +155,20 @@ function tampil(result1) {
             </div>
             `);
 }
+
+jQuery.fn.shake = function(intShakes, intDistance, intDuration) {
+  
+	intShakes = intShakes || 10;
+	intDistance = intDistance || 2;
+	intDuration = intDuration || 1000;
+
+this.each(function() {
+		$(this).css("position","relative"); 
+		for (var x=1; x<=intShakes; x++) {
+		$(this).animate({left:(intDistance*-1)}, (((intDuration/intShakes)/4)))
+		.animate({left:intDistance}, ((intDuration/intShakes)/2))
+		.animate({left:0}, (((intDuration/intShakes)/4)));
+	}
+});
+	return this;
+};
